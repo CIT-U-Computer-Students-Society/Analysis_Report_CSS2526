@@ -20,5 +20,5 @@ Create an analysis report web document for CSS 2526 Members.
    - Upload the dataset and web document to the Github CSS organization.
 
 ## Context
-Google Drive Data Link: [https://drive.google.com/drive/folders/1bPiUxkShy8NKs4IUgzWZX-B-8kxMhgSX?usp=drive_link](https://drive.google.com/drive/folders/1bPiUxkShy8NKs4IUgzWZX-B-8kxMhgSX?usp=drive_link)
+**Data Location:** The raw datasets have been provided locally in the `data/` directory. Note: These raw files contain PII and MUST NOT be committed to version control.
 Leader: Jam (can request help from CIR members or a meeting for better orientation).

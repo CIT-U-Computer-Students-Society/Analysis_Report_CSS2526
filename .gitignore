@@ -1,0 +1,12 @@
+# Ignore raw data containing PII
+data/*.csv
+data/*.xlsx
+
+# Frontend build and dependencies
+node_modules/
+dist/
+
+# Python dependencies
+venv/
+__pycache__/
+*.pyc
