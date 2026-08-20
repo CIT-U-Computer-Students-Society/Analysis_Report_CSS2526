@@ -6,7 +6,7 @@
 - `npm run lint`: Run linter
 
 ## Data Processing (Python)
-- `python scripts/clean_data.py`: Run the data cleaning and anonymization script (to be created)
+- `python scripts/anonymize_data.py`: Run the data cleaning and anonymization script
 - `pip install -r requirements.txt`: Install Python dependencies
 
 **AI Instructions**: Always check this file if a command fails.
