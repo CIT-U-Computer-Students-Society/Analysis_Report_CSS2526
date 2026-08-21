@@ -6,7 +6,7 @@ def generate_json_data():
     print("Generating JSON data for frontend...")
     
     # Create the output directory
-    output_dir = '../public/data/results'
+    output_dir = '../frontend/public/data/results'
     os.makedirs(output_dir, exist_ok=True)
     
     # Load cleaned datasets
