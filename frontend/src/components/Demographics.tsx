@@ -15,9 +15,16 @@ export default function Demographics() {
     fetch('/data/results/year_level_distribution.json')
       .then(res => res.json())
       .then(data => {
+        const getOrdinal = (n: number) => {
+          if (n === 1) return '1st Year';
+          if (n === 2) return '2nd Year';
+          if (n === 3) return '3rd Year';
+          if (n === 4) return '4th Year';
+          return `${n} Year`;
+        };
         const formatted = data.map((d: any) => ({
           ...d,
-          year_level_label: `${Math.floor(d.year_level)}st/nd/rd/th Year`.replace('1st/nd/rd/th', '1st').replace('2st/nd/rd/th', '2nd').replace('3st/nd/rd/th', '3rd').replace('4st/nd/rd/th', '4th')
+          year_level_label: getOrdinal(Math.floor(Number(d.year_level)))
         }));
         setYearData(formatted);
       });
