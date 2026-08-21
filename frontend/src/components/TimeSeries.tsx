@@ -43,19 +43,19 @@ export default function TimeSeries() {
         <div>
           <div className="insight-card">
             <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Lightbulb size={20} className="text-accent" /> Insight
+              <Lightbulb size={20} className="text-accent" /> Insight (Last Year)
             </h4>
             <p>
-              Registrations trickled in initially, but absolutely <span className="text-accent font-bold">exploded</span> during a three-day window (Aug 11-13) peaking at over 40 signups on the 13th. After August 14th, registrations practically ceased and flatlined.
+              Looking back at last year, registrations trickled in initially but <span className="text-accent font-bold">exploded</span> during a specific three-day window (Aug 11-13), peaking at over 40 signups on the 13th. After August 14th, registrations practically ceased and flatlined.
             </p>
           </div>
 
           <div className="actionable-meaning">
             <Target className="icon" size={24} />
             <div>
-              <h4 style={{ marginBottom: '8px' }}>Actionable Meaning</h4>
+              <h4 style={{ marginBottom: '8px' }}>Strategy for This Year</h4>
               <p className="text-secondary">
-                There was a massive, highly successful recruitment spike in mid-August that drove almost the entire membership base in just 72 hours. Whatever marketing campaign, event, or orientation happened between August 11-13 was incredibly effective and should be heavily replicated next year.
+                There was a highly successful recruitment spike in mid-August last year that drove almost the entire membership base in just 72 hours. For this year, we must identify exactly what marketing campaign, event, or orientation happened during those days and replicate it. We should also plan to launch our core campaigns during that same crucial mid-August window.
               </p>
             </div>
           </div>

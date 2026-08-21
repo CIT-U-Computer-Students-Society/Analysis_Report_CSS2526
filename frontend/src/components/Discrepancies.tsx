@@ -43,19 +43,19 @@ export default function Discrepancies() {
         <div>
           <div className="insight-card">
             <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Lightbulb size={20} className="text-accent" /> Insight
+              <Lightbulb size={20} className="text-accent" /> Insight (Last Year)
             </h4>
             <p>
-              There are <span className="text-accent font-bold">4 individuals</span> who went through the effort of filling out the registration forms but did not make it into the final accepted Members list (either dropped out, abandoned the payment, or were rejected).
+              Last year, only <span className="text-accent font-bold">4 individuals</span> went through the effort of filling out the registration forms but did not make it into the final accepted Members list (they either dropped out, abandoned the payment, or were rejected).
             </p>
           </div>
 
           <div className="actionable-meaning">
             <Target className="icon" size={24} />
             <div>
-              <h4 style={{ marginBottom: '8px' }}>Actionable Meaning</h4>
+              <h4 style={{ marginBottom: '8px' }}>Strategy for This Year</h4>
               <p className="text-secondary">
-                The onboarding funnel is actually incredibly efficient, with a <strong>~98% conversion rate</strong> from 'Form Filled' to 'Actual Member'. The process currently in place works almost perfectly and there are very few drop-offs.
+                The onboarding funnel historically is incredibly efficient, boasting a <strong>~98% conversion rate</strong> from 'Form Filled' to 'Actual Member'. For this year's recruitment, we do not need to overhaul the registration process itself since it already works almost perfectly. Our focus should simply be on widening the top of the funnel (getting more people to see the form).
               </p>
             </div>
           </div>

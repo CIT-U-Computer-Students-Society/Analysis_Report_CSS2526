@@ -59,19 +59,19 @@ export default function Operations() {
         <div>
           <div className="insight-card">
             <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Lightbulb size={20} className="text-accent" /> Insight
+              <Lightbulb size={20} className="text-accent" /> Insight (Last Year)
             </h4>
             <p>
-              Out of the AKWE registrants, approximately <span className="text-accent font-bold">41.8%</span> explicitly stated they want to volunteer. This represents a solid, enthusiastic segment of the membership base.
+              Out of the AKWE registrants last year, approximately <span className="text-accent font-bold">41.8%</span> explicitly stated they want to volunteer. This represented a solid, enthusiastic segment of the membership base right from the start.
             </p>
           </div>
 
           <div className="actionable-meaning">
             <Target className="icon" size={24} />
             <div>
-              <h4 style={{ marginBottom: '8px' }}>Actionable Meaning</h4>
+              <h4 style={{ marginBottom: '8px' }}>Strategy for This Year</h4>
               <p className="text-secondary">
-                The leadership team has a ready-made pool of willing volunteers. Instead of asking the entire organization blindly for help, you should directly contact this specific group of 'Yes' respondents when staffing events, as they have already opted in.
+                We know historically that nearly half of incoming members are willing to volunteer. This year, instead of blindly blasting calls for help to the entire organization, leadership should immediately segment the 'Yes' respondents from the new registration forms and personally invite them to staff events.
               </p>
             </div>
           </div>
@@ -98,19 +98,19 @@ export default function Operations() {
         <div>
           <div className="insight-card">
             <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Lightbulb size={20} className="text-accent" /> Insight
+              <Lightbulb size={20} className="text-accent" /> Insight (Last Year)
             </h4>
             <p>
-              This data highlights the preferences for certain payment gateways when students are onboarding, showing a near 50/50 split between <span className="text-accent font-bold">Cash (On-site)</span> and <span className="text-accent font-bold">GCash (Online)</span>.
+              Last year's onboarding data highlighted a near 50/50 split between <span className="text-accent font-bold">Cash (On-site)</span> and <span className="text-accent font-bold">GCash (Online)</span> as preferred payment gateways.
             </p>
           </div>
 
           <div className="actionable-meaning">
             <Target className="icon" size={24} />
             <div>
-              <h4 style={{ marginBottom: '8px' }}>Actionable Meaning</h4>
+              <h4 style={{ marginBottom: '8px' }}>Strategy for This Year</h4>
               <p className="text-secondary">
-                By understanding the split, the Treasury can optimize its workflow. Since digital payments (GCash) are highly utilized, the organization must ensure that online receipts and verification processes are just as robust and seamless as physical cash boxes.
+                By understanding this historical split, the Treasury can optimize its workflow for the upcoming recruitment week. Because digital payments (GCash) are highly utilized, the organization must ensure that online receipts and verification processes are fully set up and just as seamless as physical cash boxes before recruitment even begins.
               </p>
             </div>
           </div>

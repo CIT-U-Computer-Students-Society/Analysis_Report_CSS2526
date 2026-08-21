@@ -14,7 +14,13 @@ export default function Demographics() {
       
     fetch('/data/results/year_level_distribution.json')
       .then(res => res.json())
-      .then(data => setYearData(data));
+      .then(data => {
+        const formatted = data.map((d: any) => ({
+          ...d,
+          year_level_label: `${Math.floor(d.year_level)}st/nd/rd/th Year`.replace('1st/nd/rd/th', '1st').replace('2st/nd/rd/th', '2nd').replace('3st/nd/rd/th', '3rd').replace('4st/nd/rd/th', '4th')
+        }));
+        setYearData(formatted);
+      });
   }, []);
 
   const COLORS = ['#FFB703', '#FFFFFF', '#4CAF50', '#9E9E9E'];
@@ -54,11 +60,11 @@ export default function Demographics() {
                   <Pie
                     data={yearData}
                     dataKey="count"
-                    nameKey="year_level"
+                    nameKey="year_level_label"
                     cx="50%"
                     cy="50%"
                     outerRadius={120}
-                    label
+                    label={({ name, percent }) => `${name} (${(percent * 100).toFixed(0)}%)`}
                   >
                     {yearData.map((_entry, index) => (
                       <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
@@ -75,19 +81,19 @@ export default function Demographics() {
         <div>
           <div className="insight-card">
             <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Lightbulb size={20} className="text-accent" /> Insight
+              <Lightbulb size={20} className="text-accent" /> Insight (Last Year)
             </h4>
             <p>
-              The CSS membership is heavily skewed towards freshmen and sophomores, representing roughly <span className="text-accent font-bold">84%</span> of the total base. Furthermore, Information Technology (IT) students comfortably outnumber Computer Science (CS) students.
+              Looking back at last year's data, the CSS membership was heavily skewed towards freshmen and sophomores, representing roughly <span className="text-accent font-bold">84%</span> of the total base. Information Technology (IT) students also comfortably outnumbered Computer Science (CS) students.
             </p>
           </div>
 
           <div className="actionable-meaning">
             <Target className="icon" size={24} />
             <div>
-              <h4 style={{ marginBottom: '8px' }}>Actionable Meaning</h4>
+              <h4 style={{ marginBottom: '8px' }}>Strategy for This Year</h4>
               <p className="text-secondary">
-                Any events, workshops, or communications the CSS plans should be heavily tailored towards beginner-level content (1st/2nd-year curriculum) rather than advanced 4th-year topics, as that is where the vast majority of your audience currently sits.
+                Since our primary audience historically sits in the 1st and 2nd year levels, our events, technical workshops, and communications for this academic year should continue to prioritize beginner-friendly curriculum. To balance the demographics, we could also launch a targeted recruitment campaign specifically aimed at incoming 3rd and 4th year CS students.
               </p>
             </div>
           </div>
