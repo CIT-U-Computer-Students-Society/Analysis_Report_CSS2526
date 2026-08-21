@@ -1,7 +1,10 @@
-# Data Pipeline: Python to React (Static Site)
+# Task 3: Python to React Data Pipeline (Static Site)
 
-## Overview
-Because this project is hosted on GitHub Pages (a static file host), there is no backend server to process data on the fly or connect to a live database. 
+## Goal
+Establish a static data pipeline to bridge the gap between Python analytics and the React frontend.
+
+## Purpose
+Because this project is hosted on GitHub Pages (a static file host), there is no backend server to process data on the fly or connect to a live database.
 
 Instead, we use a **Pre-calculated Static JSON Approach**:
 1. **Python** handles all the heavy lifting (data cleaning, anonymization, and exploratory data analysis).
