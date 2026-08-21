@@ -6,8 +6,8 @@ The data must be cleaned and PIIs (Name, Student ID, Emails) must be anonymized 
 
 ## Tech Stack
 - **Data Analytics / Processing:** Python (pandas) for analytics, cleaning, and anonymizing the dataset.
-- **Frontend:** React (with Vite). Recharts or Chart.js for data visualization.
-- **Hosting:** GitHub Pages.
+- **Frontend:** React (with Vite, TypeScript). Recharts for data visualization and Framer Motion for animations.
+- **Hosting:** GitHub Pages (Automated via GitHub Actions).
 
 ## Rules
 - Never use `any` (if using TypeScript).
