@@ -32,6 +32,29 @@ def generate_json_data():
         year_dist.to_json(f'{output_dir}/year_level_distribution.json', orient='records')
         print(f"Generated {output_dir}/year_level_distribution.json")
 
+    # 2.5 Granular Program and Year-Level Distribution
+    if 'Program' in form_df.columns and 'Year Level' in form_df.columns:
+        # Map Program to Acronym
+        program_map = {
+            'Computer Science': 'BSCS',
+            'Information Technology': 'BSIT'
+        }
+        form_df['Program Acronym'] = form_df['Program'].map(lambda x: program_map.get(x, x))
+        
+        # Combine Program Acronym and Year Level (as int)
+        # Handle potential NaNs in Year Level
+        valid_years = form_df['Year Level'].dropna().astype(int).astype(str)
+        form_df['Program_Year'] = form_df.loc[valid_years.index, 'Program Acronym'] + '-' + valid_years
+        
+        granular_dist = form_df['Program_Year'].value_counts().reset_index()
+        granular_dist.columns = ['program_year', 'count']
+        
+        # Sort values logically (e.g., BSCS-1, BSCS-2, BSIT-1)
+        granular_dist = granular_dist.sort_values(by='program_year').reset_index(drop=True)
+        
+        granular_dist.to_json(f'{output_dir}/granular_program_year_distribution.json', orient='records')
+        print(f"Generated {output_dir}/granular_program_year_distribution.json")
+
     # 3. Daily Registrations (Time Series)
     if 'Completion time' in form_df.columns:
         form_df['Completion time'] = pd.to_datetime(form_df['Completion time'], errors='coerce')

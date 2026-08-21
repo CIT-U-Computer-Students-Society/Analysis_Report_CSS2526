@@ -6,6 +6,7 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pi
 export default function Demographics() {
   const [programData, setProgramData] = useState<any[]>([]);
   const [yearData, setYearData] = useState<any[]>([]);
+  const [granularData, setGranularData] = useState<any[]>([]);
 
   useEffect(() => {
     fetch(import.meta.env.BASE_URL + 'data/results/program_distribution.json')
@@ -28,6 +29,10 @@ export default function Demographics() {
         }));
         setYearData(formatted);
       });
+
+    fetch(import.meta.env.BASE_URL + 'data/results/granular_program_year_distribution.json')
+      .then(res => res.json())
+      .then(data => setGranularData(data));
   }, []);
 
   const COLORS = ['#FFB703', '#FFFFFF', '#4CAF50', '#9E9E9E'];
@@ -82,6 +87,20 @@ export default function Demographics() {
               </ResponsiveContainer>
             </div>
           </div>
+
+          <div className="glass-panel">
+            <h3>Program-Year Granular Distribution</h3>
+            <div className="chart-container">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={granularData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                  <XAxis dataKey="program_year" stroke="#E0E0E0" />
+                  <YAxis type="number" stroke="#E0E0E0" />
+                  <Tooltip cursor={{ fill: 'rgba(76, 175, 80, 0.1)' }} />
+                  <Bar dataKey="count" fill="#4CAF50" radius={[4, 4, 0, 0]} />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
         </div>
 
         {/* Right Side: Insights */}
@@ -91,7 +110,7 @@ export default function Demographics() {
               <Lightbulb size={20} className="text-accent" /> Insight (Last Year)
             </h4>
             <p>
-              Looking back at last year's data, the CSS membership was heavily skewed towards freshmen and sophomores, representing roughly <span className="text-accent font-bold">84%</span> of the total base. Information Technology (IT) students also comfortably outnumbered Computer Science (CS) students.
+              Looking back at last year's data, the CSS membership was heavily skewed towards freshmen and sophomores, representing roughly <span className="text-accent font-bold">84%</span> of the total base. Information Technology (IT) students also comfortably outnumbered Computer Science (CS) students. The granular breakdown shows that the largest single cohort is <span className="text-accent font-bold">BSIT-1</span>, strongly driving the 1st-year demographics.
             </p>
           </div>
 
@@ -100,7 +119,7 @@ export default function Demographics() {
             <div>
               <h4 style={{ marginBottom: '8px' }}>Strategy for This Year</h4>
               <p className="text-secondary">
-                Since our primary audience historically sits in the 1st and 2nd year levels, our events, technical workshops, and communications for this academic year should continue to prioritize beginner-friendly curriculum. To balance the demographics, we could also launch a targeted recruitment campaign specifically aimed at incoming 3rd and 4th year CS students.
+                Since our primary audience historically sits in the 1st and 2nd year levels, our events, technical workshops, and communications for this academic year should continue to prioritize beginner-friendly curriculum (especially tailored for BSIT freshmen). To balance the demographics, we could also launch a targeted recruitment campaign specifically aimed at incoming 3rd and 4th year CS students.
               </p>
             </div>
           </div>
