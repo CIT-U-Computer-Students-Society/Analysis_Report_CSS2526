@@ -8,11 +8,11 @@ export default function Operations() {
   const [payments, setPayments] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch('/data/results/volunteer_interest.json')
+    fetch(import.meta.env.BASE_URL + 'data/results/volunteer_interest.json')
       .then(res => res.json())
       .then(data => setVolunteers(data));
 
-    fetch('/data/results/payment_method_preferences.json')
+    fetch(import.meta.env.BASE_URL + 'data/results/payment_method_preferences.json')
       .then(res => res.json())
       .then(data => setPayments(data));
   }, []);

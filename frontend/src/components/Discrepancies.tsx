@@ -7,7 +7,7 @@ export default function Discrepancies() {
   const [discrepancyData, setDiscrepancyData] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch('/data/results/registration_discrepancy.json')
+    fetch(import.meta.env.BASE_URL + 'data/results/registration_discrepancy.json')
       .then(res => res.json())
       .then(data => setDiscrepancyData(data));
   }, []);

@@ -7,7 +7,7 @@ export default function TimeSeries() {
   const [timelineData, setTimelineData] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch('/data/results/daily_registrations.json')
+    fetch(import.meta.env.BASE_URL + 'data/results/daily_registrations.json')
       .then(res => res.json())
       .then(data => setTimelineData(data));
   }, []);

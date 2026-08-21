@@ -8,11 +8,11 @@ export default function Demographics() {
   const [yearData, setYearData] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch('/data/results/program_distribution.json')
+    fetch(import.meta.env.BASE_URL + 'data/results/program_distribution.json')
       .then(res => res.json())
       .then(data => setProgramData(data));
       
-    fetch('/data/results/year_level_distribution.json')
+    fetch(import.meta.env.BASE_URL + 'data/results/year_level_distribution.json')
       .then(res => res.json())
       .then(data => {
         const getOrdinal = (n: number) => {
