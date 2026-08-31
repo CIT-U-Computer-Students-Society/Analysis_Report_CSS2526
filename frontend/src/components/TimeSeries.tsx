@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Lightbulb, Target, TrendingUp } from 'lucide-react';
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, ReferenceLine } from 'recharts';
 
 export default function TimeSeries() {
-  const [timelineData, setTimelineData] = useState<any[]>([]);
+  const [timelineData, setTimelineData] = useState<{date: string, count: number}[]>([]);
 
   useEffect(() => {
     fetch(import.meta.env.BASE_URL + 'data/results/daily_registrations.json')
@@ -25,17 +25,37 @@ export default function TimeSeries() {
       <div className="chart-layout">
         {/* Left Side: Chart */}
         <div className="glass-panel">
-          <h3>Daily Registration Trend</h3>
+          <h3>Daily Registration (Time Series/Trend)</h3>
           <div className="chart-container">
             <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={timelineData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+              <LineChart data={timelineData} margin={{ top: 15, right: 30, left: 0, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
                 <XAxis dataKey="date" stroke="#E0E0E0" />
                 <YAxis stroke="#E0E0E0" />
                 <Tooltip cursor={{ fill: 'rgba(255, 183, 3, 0.1)' }} />
-                <Line type="monotone" dataKey="count" stroke="#FFB703" strokeWidth={3} activeDot={{ r: 8 }} />
+                
+                <ReferenceLine x="2025-08-11" stroke="#4ade80" strokeDasharray="3 3" strokeWidth={2} />
+                <ReferenceLine x="2025-08-14" stroke="#60a5fa" strokeDasharray="3 3" strokeWidth={2} />
+                <ReferenceLine x="2025-08-27" stroke="#f87171" strokeDasharray="3 3" strokeWidth={2} />
+
+                <Line type="monotone" dataKey="count" stroke="#FFB703" strokeWidth={3} activeDot={{ r: 8 }} name="Daily Registrations" />
               </LineChart>
             </ResponsiveContainer>
+          </div>
+          
+          <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '16px', marginTop: '16px', fontSize: '13px', color: '#E0E0E0' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <span style={{ width: '16px', borderBottom: '2px dashed #4ade80' }}></span>
+              Start of Membership
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <span style={{ width: '16px', borderBottom: '2px dashed #60a5fa' }}></span>
+              Start of Akwe
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <span style={{ width: '16px', borderBottom: '2px dashed #f87171' }}></span>
+              End of Akwe
+            </div>
           </div>
         </div>
 
