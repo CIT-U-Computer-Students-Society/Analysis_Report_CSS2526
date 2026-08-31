@@ -60,7 +60,24 @@ def generate_json_data():
         form_df['Completion time'] = pd.to_datetime(form_df['Completion time'], errors='coerce')
         daily_reg = form_df['Completion time'].dt.date.value_counts().sort_index().reset_index()
         daily_reg.columns = ['date', 'count']
-        daily_reg['date'] = daily_reg['date'].astype(str) # convert dates to strings for JSON
+        
+        # Create a complete date range to fill missing days with 0
+        daily_reg['date'] = pd.to_datetime(daily_reg['date'])
+        if not daily_reg.empty:
+            min_date = daily_reg['date'].min()
+            max_date = daily_reg['date'].max()
+            
+            # Ensure the range covers our important dates at least
+            important_dates_end = pd.to_datetime('2025-08-27')
+            if max_date < important_dates_end:
+                max_date = important_dates_end
+                
+            idx = pd.date_range(min_date, max_date)
+            daily_reg.set_index('date', inplace=True)
+            daily_reg = daily_reg.reindex(idx, fill_value=0).reset_index()
+            daily_reg.columns = ['date', 'count']
+            
+        daily_reg['date'] = daily_reg['date'].dt.strftime('%Y-%m-%d') # convert dates to strings for JSON
         daily_reg.to_json(f'{output_dir}/daily_registrations.json', orient='records')
         print(f"Generated {output_dir}/daily_registrations.json")
 
